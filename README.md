@@ -127,7 +127,7 @@ export SERVICE_NAME=user-management
 ```
 
 ## Структура проекта: 
-
+```
 gravitum/
 ├── bin/                  # Скомпилированные бинарные файлы
 ├── cmd/                  
@@ -151,3 +151,4 @@ gravitum/
 ├── Dockerfile            # Инструкции для сборки Docker
 ├── docker-compose.yml    # Инструкции для сборки через docker-compose
 └── README.md             # Этот файл
+```
