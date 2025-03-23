@@ -17,7 +17,7 @@ import (
 )
 
 func Run() {
-	conf, err := config.Load("internal/config/.env")
+	conf, err := config.Load()
 	if err != nil {
 		log.Fatal("failed to initialize config")
 	}

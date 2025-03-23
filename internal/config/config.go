@@ -27,20 +27,35 @@ const (
 	defaultServiceName   = "user-management"
 	defaultDatabaseDSN   = ""
 	defaultDBPoolWorkers = 50
+	defaultMode          = "debug"
 	defaultCtxTimeOut    = 5 * time.Second
 )
 
-func Load(envFiles ...string) (Config, error) {
-	if len(envFiles) != 0 {
-		if err := godotenv.Load(envFiles...); err != nil {
-			return Config{}, err
-		}
+var (
+	runAddress = flag.String("a", defaultRunAddress,
+		"run address defines on what port and host the server will be started")
+	databaseDSN = flag.String("d", defaultDatabaseDSN,
+		"defines the database connection address")
+	modePtr     = flag.String("mode", defaultMode, "mode defines which env file to use for service")
+	flagsParsed = false
+)
+
+func Load() (Config, error) {
+	if !flagsParsed && !flag.Parsed() {
+		flag.Parse()
+		flagsParsed = true
 	}
 
-	runAddress := flag.String("a", defaultRunAddress,
-		"run address defines on what port and host the server will be started")
-	databaseDSN := flag.String("d", defaultDatabaseDSN,
-		"defines the database connection address")
+	switch *modePtr {
+	case "debug":
+		if err := godotenv.Load("internal/config/.env"); err != nil {
+			return Config{}, err
+		}
+	case "release":
+
+	default:
+		log.Fatal("invalid mode: " + *modePtr)
+	}
 
 	cfg := new(Config)
 
