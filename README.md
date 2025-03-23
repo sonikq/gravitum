@@ -26,8 +26,8 @@
 2. Вставьте свои переменные окружения в Dockerfile, а именно строку подключения к БД(DATABASE_DSN)   
 
 3. Соберите и запустите контейнер:
-  - docker build -f ./Dockerfile -t gravitum .
-  - docker run -d -p 3000:3000 --name gravitum-user-service --restart=always gravitum
+  - ```docker build -f ./Dockerfile -t gravitum .```
+  - ```docker run -d -p 3000:3000 --name gravitum-user-service --restart=always gravitum```
 
 4. Сервис будет доступен по адресу http://localhost:3000
 
@@ -66,7 +66,7 @@ volumes:
 ```
 
 2. Запустите с помощью Docker Compose: 
-  - docker-compose up -d
+  - ```docker-compose up -d```
 
 ## Локальный запуск:
 
@@ -77,7 +77,7 @@ cd gravitum_test_task
    ```
 
 2. Установите зависимости:
-  - go mod download
+  - ```go mod download```
 
 3. Настройте переменные окружения:
 ```bash
@@ -90,8 +90,8 @@ export SERVICE_NAME=user-management
 ```
 
 4. Запустите проект: 
-   - # На Linux: go run /cmd/user_management/main.go
-   - # На Windows: go run .\cmd\user_management\main.go
+   -  На Linux: ```go run /cmd/user_management/main.go```
+   -  На Windows: ```go run .\cmd\user_management\main.go```
 
 5. Сервис будет доступен по адресу http://localhost:3000
 
